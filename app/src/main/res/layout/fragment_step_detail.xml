@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.ofoegbuvgmail.funbaking.ui.fragments.StepDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/layout_margin"
+        android:background="@android:color/white"
+        android:keepScreenOn="true">
+
+        <TextView
+            android:id="@+id/step_short_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
+            tools:text="Introduction" />
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/step_video_player"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/exo_player_height"
+            android:layout_marginBottom="@dimen/margins"
+            app:resize_mode="fixed_width" />
+
+        <TextView
+            android:id="@+id/step_description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="@string/step_description_text_holder" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/layout_margin">
+
+            <Button
+                android:id="@+id/previous_step_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/previous_step_button" />
+
+            <Button
+                android:id="@+id/next_step_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/next_step_button" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

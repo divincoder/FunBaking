@@ -1,0 +1,30 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Baking Time</string>
+    <string name="action_contact_me">Contact developer</string>
+    <string name="error_no_internet">Something terrible happened, Please check your internet connection</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="step_description_text_holder">1. Preheat the oven to 350°F. Butter the bottoms and sides of two 9\ round pans with 2\"-high sides. Cover the bottoms of the pans with rounds of parchment paper, and butter the paper as well.</string>
+    <string name="previous_step_button">Previous Step</string>
+    <string name="next_step_button">Next Step</string>
+    <string name="end_of_steps">You\'ve reached the end of the tutorial.</string>
+    <string name="start_of_steps">Back to the beginning! Ready to learn?</string>
+
+    <string name="error_no_decoder">This device does not provide a decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
+
+    <string name="error_no_secure_decoder">This device does not provide a secure decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
+
+    <string name="error_querying_decoders">Unable to query device decoders</string>
+
+    <string name="error_instantiating_decoder">Unable to instantiate decoder <xliff:g id="decoder_name">%1$s</xliff:g></string>
+    <string name="ingredient_name_test">Graham Cracker crumbs(2 CUP)</string>
+    <string name="ingredient_list_heading">Ingredients list:</string>
+    <string name="empty_recipe_list">No Favourite Recipe was selected</string>
+    <string name="widget_ingredient_item_text">Bread Crumb Cracker</string>
+    <string name="action_favorite">Add as Favorite Recipe</string>
+
+    <string name="favorite_added_message">%s has been added as your favorite recipe!</string>
+    <string name="favorite_removed_message">%s has been removed as your favorite recipe</string>
+
+</resources>
