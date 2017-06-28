@@ -15,16 +15,6 @@ import com.ofoegbuvgmail.funbaking.data.RecipeProvider;
 
 
 public class RecipeAppWidget extends AppWidgetProvider {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        if (RecipeProvider.ACTION_DATA_UPDATED.equals(intent.getAction())) {
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
-                    new ComponentName(context, getClass()));
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.lv_ingredients);
-        }
-
-    }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -44,6 +34,18 @@ public class RecipeAppWidget extends AppWidgetProvider {
             views.setEmptyView(R.id.lv_ingredients, R.id.widget_empty);
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
+        }
+
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        if (RecipeProvider.ACTION_DATA_UPDATED.equals(intent.getAction())) {
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
+                    new ComponentName(context, getClass()));
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.lv_ingredients);
         }
 
     }
