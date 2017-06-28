@@ -17,6 +17,7 @@
         android:id="@+id/ingredient_item_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text="@string/ingredient_name_test" />
 
 </LinearLayout>
