@@ -1,6 +1,5 @@
 package com.ofoegbuvgmail.funbaking.ui.activities;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -10,9 +9,6 @@ import com.ofoegbuvgmail.funbaking.model.Step;
 import com.ofoegbuvgmail.funbaking.ui.fragments.StepDetailFragment;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.ofoegbuvgmail.funbaking.adapter.RecipeAdapter.RECIPE;
 import static com.ofoegbuvgmail.funbaking.adapter.RecipeDetailAdapter.STEPS;
