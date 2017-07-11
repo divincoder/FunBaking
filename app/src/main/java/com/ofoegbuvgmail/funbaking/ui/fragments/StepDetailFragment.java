@@ -114,25 +114,21 @@ public class StepDetailFragment extends Fragment implements View.OnClickListener
         mVideoPlayerView.setVisibility(View.VISIBLE);
         mVideoPlayerView.requestFocus();
         String videoUrl = mSteps.get(index).getVideoURL();
+        String thumbNailUrl = mSteps.get(index).getThumbnailURL();
         if (!videoUrl.isEmpty()) {
             initializePlayer(Uri.parse(videoUrl));
+        } else if (!thumbNailUrl.isEmpty()) {
+            initializePlayer(Uri.parse(thumbNailUrl));
         } else {
             mVideoPlayerView.setVisibility(View.GONE);
         }
     }
 
-//    private void playStepVideoForPhone() {
-//        playStepVideoForTab();
-//        isLandscape();
-//        previousStepButton.setVisibility(View.VISIBLE);
-//        nextStepButton.setVisibility(View.VISIBLE);
-//
-//    }
 
-//    private void isLandscape() {
-//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-//            hideSystemUi();
-//    }
+    private void isLandscape() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            hideSystemUi();
+    }
 
     @SuppressLint("InlinedApi")
     private void hideSystemUi() {
@@ -153,11 +149,12 @@ public class StepDetailFragment extends Fragment implements View.OnClickListener
         mVideoPlayerView.setVisibility(View.VISIBLE);
         stepDescrption.setVisibility(View.VISIBLE);
         mSteps = getArguments().getParcelableArrayList(STEPS);
-        //assert mSteps != null;
+        assert mSteps != null;
         stepDescrption.setText(mSteps.get(mIndex).getDescription());
         shortDescription.setText(mSteps.get(mIndex).getShortDescription());
 
         playStepVideo(mIndex);
+        isLandscape();
     }
 
     private void initializePlayer(Uri uri) {
@@ -208,7 +205,6 @@ public class StepDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onResume() {
         super.onResume();
-        hideSystemUi();
         if ((Util.SDK_INT <= 23 || exoPlayer == null)) {
             showStepDetails();
         }
@@ -269,7 +265,7 @@ public class StepDetailFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.next_step_button:
-                if (mIndex < mSteps.size()- 1) {
+                if (mIndex < mSteps.size() - 1) {
                     int index = ++mIndex;
                     shortDescription.setText(mSteps.get(index).getShortDescription());
                     stepDescrption.setText(mSteps.get(index).getDescription());

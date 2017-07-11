@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ofoegbuvgmail.funbaking.R;
 import com.ofoegbuvgmail.funbaking.ui.activities.RecipeDetailActivity;
 import com.ofoegbuvgmail.funbaking.model.Recipe;
@@ -45,25 +46,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         Recipe recipe = mRecipes.get(position);
         holder.recipeTextView.setText(recipe.getName());
         holder.servingsTexView.append("Servings " + recipe.getServings());
+        holder.setImage(mContext, recipe.getImage(), recipe);
 
-        ImageView imageView = holder.recipeImageView;
 
-        switch (recipe.getId()) {
-            case 1:
-                imageView.setImageResource(R.drawable.nutella_pie);
-                break;
-            case 2:
-                imageView.setImageResource(R.drawable.brownies);
-                break;
-            case 3:
-                imageView.setImageResource(R.drawable.yellow_cake);
-                break;
-            case 4:
-                imageView.setImageResource(R.drawable.cheese_cake);
-                break;
-            default:
-                break;
-        }
     }
 
     @Override
@@ -96,6 +81,33 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             Intent intent = new Intent(mContext, RecipeDetailActivity.class);
             intent.putExtra(RECIPE, mRecipes.get(getAdapterPosition()));
             mContext.startActivity(intent);
+        }
+
+        public void setImage(Context context, final String recipeImageUrl, Recipe mRecipe) {
+
+            if (!recipeImageUrl.isEmpty()) {
+                Glide.with(context)
+                        .load(recipeImageUrl)
+                        .into(recipeImageView);
+            } else {
+
+                switch (mRecipe.getId()) {
+                    case 1:
+                        recipeImageView.setImageResource(R.drawable.nutella_pie);
+                        break;
+                    case 2:
+                        recipeImageView.setImageResource(R.drawable.brownies);
+                        break;
+                    case 3:
+                        recipeImageView.setImageResource(R.drawable.yellow_cake);
+                        break;
+                    case 4:
+                        recipeImageView.setImageResource(R.drawable.cheese_cake);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
