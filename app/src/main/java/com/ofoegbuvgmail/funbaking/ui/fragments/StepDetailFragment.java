@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -79,6 +81,8 @@ public class StepDetailFragment extends Fragment implements View.OnClickListener
     TextView shortDescription;
     @BindView(R.id.step_description_text)
     TextView stepDescrption;
+    @BindView(R.id.recipe_thumbnail)
+    ImageView thumbnailImage;
     Unbinder unbinder;
 
 
@@ -118,12 +122,15 @@ public class StepDetailFragment extends Fragment implements View.OnClickListener
         if (!videoUrl.isEmpty()) {
             initializePlayer(Uri.parse(videoUrl));
         } else if (!thumbNailUrl.isEmpty()) {
-            initializePlayer(Uri.parse(thumbNailUrl));
+            mVideoPlayerView.setVisibility(View.GONE);
+            thumbnailImage.setVisibility(View.VISIBLE);
+            Glide.with(getActivity())
+                    .load(thumbNailUrl)
+                    .into(thumbnailImage);
         } else {
             mVideoPlayerView.setVisibility(View.GONE);
         }
     }
-
 
     private void isLandscape() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
